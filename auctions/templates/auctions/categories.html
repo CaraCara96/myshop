@@ -1,0 +1,29 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+<h1 class="listings_heading">
+    Categories
+</h1>
+<div class="cat_wrapper">
+    {% for cat in category %}
+<div class="cat_card">
+    <div class="cat_head">
+        <h1>
+            {{cat.name}}
+
+        </h1>
+    </div>
+    <div class="cat_btn">
+            <a href="{% url 'category' cat=cat.name %}">
+        <button type="button" class="btn btn-outline-light btn-lg">View</button>
+    </a>
+
+    </div>
+
+</div>
+{% endfor %}
+
+
+</div>
+
+{% endblock %}

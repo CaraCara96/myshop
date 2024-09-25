@@ -1,0 +1,77 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h1 class="listings_heading">
+        Won Bids
+    </h1>
+    <div>
+        {% if messages %}
+<ul class="messages success">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+    </div>
+    
+    <div class="list_grid">
+        {% for bid in my_bids %}
+    
+    <div class="listing_card">
+        <div class="section_a">
+
+        <div class="l_header">
+            <h2>
+                {{bid.listing.title}}
+            </h2>
+           
+        </div>
+       
+        <div class="l_bids">
+            <h4>Bids</h4>
+            <h5> Start: R{{bid.listing.starting_bid}}</h5>
+            <h5 style="color: green"> Won: R{{bid.amount}}</h5>
+        
+            <span>
+                
+            </span>
+         
+
+        </div>
+        <div class="l_description">
+            <h5>Message</h5>
+            Congratulations you won <strong>{{bid.listing.title}}</strong> 
+            
+        </div>
+        {% if user.is_authenticated %}
+        <div class="l_btn" id="wtt">
+            
+       
+        
+       
+        </div>
+      
+        {% endif %}
+        
+    </div>
+    <div class="section_b" id="sec_b">
+        <div class="l_picture">
+            <img src="{{bid.listing.picture}}" alt="Image for {{listing.title}}"/>
+        </div>
+      
+    </div>
+        
+    </div>
+    {% empty %}
+<div style="font-size: 35px;">
+    No Items On This Category
+</div>
+{% endfor %}
+    <!-- sec 2 -->
+    
+   
+</div>
+{% endblock %}

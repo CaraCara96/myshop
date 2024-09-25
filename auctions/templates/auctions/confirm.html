@@ -1,0 +1,21 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+<h1 class="listings_heading">
+    Delete Listing
+</h1>
+<div class="create_wrapper">
+    <form class="create_form" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <h2>
+            Are You Sure You Want To Delete: {{listing.title}}
+        </h2>
+        <input type="submit" name="save" value="Delete Listing" class="btn btn-primary btn-lg">
+        <a href="{% url 'my_listing' %}">
+            <button type="button"  class="btn btn-secondary btn-lg"> Cancel </button>
+        </a>
+      </form>
+</div>
+
+{% endblock %}

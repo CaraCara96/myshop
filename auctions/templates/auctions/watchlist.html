@@ -1,0 +1,88 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+<h1 class="listings_heading">
+    Watch List
+</h1>
+<div>
+    {% if messages %}
+
+    <ul class="messages" id="error_message">
+    {% for message in messages %}
+    {% if message.tags == 'error'%}
+    <li class="error_mes"  >
+    {{message}}
+    </li>
+    {% elif  message.tags == 'info'  %}
+    <li class="info_mes"  >
+        {{message}}
+        </li>
+    {% endif %}
+    
+    {% endfor %}
+    </ul>
+    
+    <hr>
+    {% endif %}
+</div>
+
+<div class="list_grid">
+    {% for listing in listing %}
+
+<div class="listing_card">
+    <div class="section_a">
+
+    <div class="l_header">
+        <h2>
+            {{listing.title}}
+        </h2>
+       
+    </div>
+   
+    <div class="l_bids">
+        <h4>Bids</h4>
+    
+        <h5>Starting Bid: R{{listing.starting_bid}}</h5>
+    
+        <span>
+            
+        </span>
+     
+
+    </div>
+    <div class="l_description">
+        <h5>Description</h5>
+        {{listing.description}}
+    </div>
+    
+    <div class="l_btn">
+        <form action="{% url 'remove_item' rem_id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <input type="checkbox"  hidden name="active">
+            <a href="{% url 'listing' list_id=listing.id %}">
+                <button type="button" class="btn btn-outline-primary btn-lg">Read More</button>
+            </a>
+            <input type="submit" name="save" class="btn btn-outline-danger btn-lg" value="Remove WatchList"/>
+        </form>
+    </div>
+   
+</div>
+<div class="section_b">
+    <div class="l_picture">
+        <img src="{{listing.picture}}" alt="Image for {{listing.title}}"/>
+    </div>
+</div>
+    
+</div>
+{% empty %}
+<div style="font-size: 35px;">
+    No Items On Watch List
+</div>
+{% endfor %}
+<!-- sec 2 -->
+
+
+</div>
+
+{% endblock %}

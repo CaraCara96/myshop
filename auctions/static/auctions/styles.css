@@ -1,0 +1,289 @@
+body {
+    padding: 10px;
+}
+.navbar{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    
+    background: rgb(10, 1, 34);
+    color: white;
+
+}
+.left a{
+    text-decoration: none;
+    color: aliceblue;
+    transition: 500ms ease-in-out;
+}
+.left a:hover{
+    color: greenyellow;
+}
+.right strong{
+    text-transform: uppercase;
+    color: greenyellow;
+}
+/* LogIn */
+.log_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid gray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 50%;
+
+}
+.log_div h2{
+    padding-bottom: 2rem;
+    display: flex;
+    float: left;
+    padding-top: 2rem;
+    color: rgb(4, 101, 248);
+    
+    width: 80%;
+    font-size: 45px;
+}
+.log_form{
+    
+    width: 80%;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+.register{
+    padding: 1rem 0;
+}
+/* Active Listings */
+
+.listings_heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid gray;
+    
+}
+.list_grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+}
+.l_header h4{
+    font-size: 13px;
+}
+.listing_card{
+    display: grid;
+    grid-template-columns: 2fr 1.4fr;
+    border: 2px solid gray ;
+    padding: 4px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.l_header{
+    padding-bottom: 1rem;
+   
+    color: rgb(4, 101, 248);
+    padding-left: 0.5rem;
+    border-bottom: 2px solid gray;
+}
+.l_bids{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 1rem;
+    padding-top: 0.4rem;
+    font-size: 18px;
+    
+    padding-left: 0.5rem;
+    border-bottom: 2px solid gray;
+}
+.section_a{
+    
+    padding: .4rem;
+  
+}
+.l_description{
+    padding-top: 0.4rem;
+    padding-left: 0.5rem;
+   
+}
+.l_picture{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.l_btn{
+    padding: 0.5rem ;
+}
+.l_picture{
+    margin-top: 4rem;
+    margin-left: 2rem;
+    width: 200px;
+    height: 200px;
+}
+.l_picture img{
+    width: 100%;
+    height: 100%;
+}
+
+/* categories */
+.cat_wrapper{
+    
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+.cat_card{
+    padding: 16px;
+    border: 2px solid gray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    background: rgb(13, 1, 43);
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    
+}
+
+/* Create Listing */
+
+.create_wrapper{
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.create_form{
+    width: 60%;
+    padding: 1rem;
+}
+.c_label{
+    font-size: 20px;
+}
+/* Listing */
+
+#list__grid{
+    grid-template-columns: 1fr;
+  
+}
+#list_c{
+
+margin-left: 18%;
+margin-right: 18%;
+
+}
+#list_card{
+    border-radius: 10px;
+}
+.bid_save{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bid_save input{
+    padding: 0.6rem;
+}
+
+/* comments */
+.comments_wrapper{
+    margin-top: 1rem;
+    margin-left: 18%;
+    margin-right: 18%;
+}
+.comments_header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid gray;
+}
+.comments_header h3{
+font-size: 40px;
+}
+.comments{
+    padding: 1rem 0;
+    border-bottom: 1px solid gray;
+}
+.comment_form{
+    padding-top: 1rem;
+}
+.bid{
+    padding-top: 1rem;
+}
+#error_message{
+    width: auto;
+    height: 40px;
+  
+  margin-left: 0;
+  padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white ;
+    font-size: 20px;
+    border: 2px solid gray;
+    box-shadow: 5px 5px 5px rgba(19, 18, 18, 0.3);
+
+
+}
+.info_mes{
+    width: 100%;
+    height: 100%;
+    background: rgb(4, 97, 16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(255, 255, 255) ;
+    font-size: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.error_mes{
+    width: 100%;
+    height: 100%;
+    background: rgb(209, 53, 6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white ;
+    font-size: 20px;
+}
+.user_comment{
+    text-transform: uppercase;
+    padding-right: 1rem;
+}
+
+/* watch list */
+#wtt{
+    display: flex;
+    flex-direction: row;
+}
+
+.success{
+    display: flex;
+    flex-direction: row;
+    background: rgb(1, 1, 82);
+    color: white;
+    list-style: none;
+    font-size: 22px;
+}
+#sec_b{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.bid_content{
+    margin-top: .5rem;
+}
+.bid_content div{
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+}

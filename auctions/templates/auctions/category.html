@@ -1,0 +1,77 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h1 class="listings_heading">
+        Category
+    </h1>
+    
+    <div class="list_grid">
+        {% for listing in listing %}
+    
+    <div class="listing_card">
+        <div class="section_a">
+
+        <div class="l_header">
+            <h2>
+                {{listing.title}}
+            </h2>
+           
+        </div>
+       
+        <div class="l_bids">
+            <h4>Bids</h4>
+        
+            <h5>Starting Bid: R{{listing.starting_bid}}</h5>
+        
+            <span>
+                
+            </span>
+         
+
+        </div>
+        <div class="l_description">
+            <h5>Description</h5>
+            {{listing.description}}
+        </div>
+        {% if user.is_authenticated %}
+        <div class="l_btn" id="wtt">
+            
+        <form action="{% url 'list_item' watch_id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <input type="checkbox" checked hidden name="active">
+            <a href="{% url 'listing' list_id=listing.id %}">
+                <button type="button" class="btn btn-outline-primary btn-lg">Read More</button>
+            </a>
+            <input type="submit" name="save" class="btn btn-outline-success btn-lg" value="Add WatchList"/>
+        </form>
+        </div>
+        {% else %}
+        <div class="l_btn">
+            
+                <button type="button" class="btn btn-outline-primary btn-lg" disabled>Read More
+
+                </button>
+            
+            
+        </div>
+        {% endif %}
+        
+    </div>
+    <div class="section_b">
+        <div class="l_picture">
+            <img src="{{listing.picture}}" alt="Image for {{listing.title}}"/>
+        </div>
+    </div>
+        
+    </div>
+    {% empty %}
+<div style="font-size: 35px;">
+    No Items On This Category
+</div>
+{% endfor %}
+    <!-- sec 2 -->
+    
+   
+</div>
+{% endblock %}

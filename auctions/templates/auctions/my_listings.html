@@ -1,0 +1,98 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h1 class="listings_heading">
+        My Listing
+    </h1>
+    <div>
+        {% if messages %}
+<ul class="messages success">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+    </div>
+    
+    <div class="list_grid">
+        {% for listing in listings %}
+    
+    <div class="listing_card">
+        <div class="section_a">
+
+        <div class="l_header">
+            <h2>
+                {{listing.title}}
+            </h2>
+           
+        </div>
+       
+        <div class="l_bids">
+            <h4>Bids</h4>
+        
+            <h5>Starting Bid: R{{listing.starting_bid}}</h5>
+        
+            <span>
+                
+            </span>
+         
+
+        </div>
+        <div class="l_description">
+            <h5>Description</h5>
+            {{listing.description}}
+        </div>
+        {% if user.is_authenticated %}
+        <div class="l_btn" id="wtt">
+            
+       
+            <a href="{% url 'update' list_id=listing.id %}" style="margin-right: 1rem;">
+                <button type="button" class="btn btn-primary btn-lg">Update</button>
+            </a>
+            <a href="{% url 'delete' list_id=listing.id %}">
+            <input type="submit" name="delete" class="btn btn-danger btn-lg" value="Delete"/>
+            </a>
+       
+       
+        </div>
+      
+        {% endif %}
+        
+    </div>
+    <div class="section_b" id="sec_b">
+        <div class="l_picture">
+            <img src="{{listing.picture}}" alt="Image for {{listing.title}}"/>
+        </div>
+        <div class="bid_content">
+            <div>
+               <h5>
+                {% if listing.highest_bid %}
+                <p>Highest Bid: {{ listing.highest_bid }}</p>
+            {% else %}
+                <p>No bids yet!</p>
+            {% endif %}
+            </h5> 
+            </div>
+               
+            <div>
+                <a href="{% url 'close_listing' list_id=listing.id %}">
+                    <input type="button" name="close" class="btn btn-warning btn-lg" value="Close Listing"/>
+                    </a>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    {% empty %}
+<div style="font-size: 35px;">
+    No Items On This Category
+</div>
+{% endfor %}
+    <!-- sec 2 -->
+    
+   
+</div>
+{% endblock %}

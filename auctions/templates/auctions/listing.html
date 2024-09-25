@@ -1,0 +1,139 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+<h1 class="listings_heading">
+    Listing
+</h1>
+<div>
+    {% if messages %}
+
+    <ul class="messages" id="error_message">
+    {% for message in messages %}
+    {% if message.tags == 'error'%}
+    <li class="error_mes"  >
+    {{message}}
+    </li>
+    {% elif  message.tags == 'info'  %}
+    <li class="info_mes"  >
+        {{message}}
+        </li>
+    {% endif %}
+    
+    {% endfor %}
+    </ul>
+    
+    <hr>
+    {% endif %}
+</div>
+
+
+<div class="list_grid" id="list__grid">
+
+<div id="list_c">
+
+{% if listing %}
+<div class="listing_card" id="list_card">
+    <div class="section_a">
+
+    <div class="l_header">
+        <h2>
+            {{listing.title}}
+        </h2>
+        <h6>
+            Date: {{listing.date}}
+        </h6>
+       
+    </div>
+   
+    <div class="l_bids">
+        <h5>Bids</h5>
+        <span>
+            Starting Bid: R {{listing.starting_bid}}
+        </span>
+        <span>
+            Current Bid: R {{current_bid}}
+        </span>
+        <span style="background-color: rgb(2, 46, 31); font-weight: bold;color: white;">
+            {% if my_bid %}
+            My Bid: R {{my_bid.amount}}
+            {% else %}
+            My Bid: No Bid Yet!
+            {% endif %}
+        </span>
+     
+
+    </div>
+    <div class="l_description">
+        <h5>Description</h5>
+        {{listing.description}}
+    </div>
+    
+    
+</div>
+<div class="section_b">
+    <div class="l_picture">
+        <img src="{{listing.picture}}" alt="Image for {{listing.title}}"/>
+    </div>
+    <div class="bid">
+        <form action="{% url 'new_bid' bid_item=listing.id %}" method="POST">
+            {% csrf_token %}
+
+           {{form.as_p}}
+          
+
+            <div class="bid_save">
+                <input type="submit" name="save" value="Place Bid" class="btn btn-success btn-lg">
+            </div>
+            
+            
+        </form>
+
+    </div>
+</div>
+    
+</div>
+</div>
+{% endif %}
+<!-- comments -->
+    <div class="comments_wrapper">
+        <div class="comments_header">
+            <h3>Comments</h3>
+        </div>
+
+    
+       
+        
+        <form action="{% url 'new_comment' comment_id=listing.id %}" method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{c_form.as_p}}
+            </div>
+            <div class="bid_save">
+                <input type="submit" name="save" value="Add Comment" class="btn btn-primary btn-lg">
+            </div>
+
+        </form>
+        <hr>
+        {% for comment in comments %}
+        <div class="comments">
+            <strong><span class="user_comment">@{{comment.user}}: </span></strong> <span>{{comment.comment}}</span> <br>
+            <span><strong>{{comment.date|timesince}}</strong> ago</span>
+        </div>
+        {% empty %}
+        <div class="comments">
+            <strong><span class="user_comment"> No Comment</span></strong> 
+            
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- sec 2 -->
+
+
+</div>
+
+{% endblock %}
